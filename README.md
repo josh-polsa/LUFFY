@@ -164,5 +164,32 @@ LUFFY/
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/worker.py:109** - do not use cupy
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/worker.py:209** - (woosuk): Profile swapping overhead and optimize if needed.
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/worker.py:291** - (shengguangming): maybe we should also flag the megatron is initialized
-- [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:XX** - FSDP model loading and distributed training setup
-- [ ] **luffy/verl/verl/trainer/main_ppo.py:XX** - Reward system parallel processing and validation
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:106** - (sgm): Currently, we only support reference model param offload
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:204** - add more optimizer args into config
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:338** - here, we should return all metrics
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:444** - (sgm): support critic model offload
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:478** - support vpp here
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:507** - add more optimizer args into config
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:667** - add more optimizer args into config
+- [ ] **luffy/verl/verl/workers/megatron_workers.py:720** - reward model use itself tokenizer instead of sft tokenizer
+- [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:145** - (sgm): check why is bfloat16
+- [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:192** - actually, we just need to control the sampling order.
+- [ ] **luffy/verl/verl/workers/reward_model/megatron/reward_model.py:233** - we may use the new schedule instead
+- [ ] **luffy/verl/verl/workers/rollout/hf_rollout.py:98** - filter out the seq with no answers like ds-chat
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_ulysses.py:49** - check how to set seed for each model
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_ulysses.py:56** - check how to set seed for each model
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:82** - offload FSDP model weights
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:113** - Current impl doesn't consider FSDP with torch micro-dp
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:122** - Current impl doesn't consider FSDP with torch micro-dp
+- [ ] **luffy/verl/verl/workers/sharding_manager/fsdp_vllm.py:130** - shall we build a micro_dp group for vllm when integrating with vLLM?
+- [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:76** - after binding to the memory buffer, we can load the checkpoint here
+- [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:253** - (sgm): this may not be true for FSDP -> vLLM
+- [ ] **luffy/verl/verl/workers/sharding_manager/megatron_vllm.py:323** - (zhangchi.usc1992) We can consider copy non-tp weight to another infer buffer.
+
+## 🤝 Contributing
+
+1. Pick a TODO item from the list above
+2. Implement the functionality
+3. Test your implementation
+4. Update this README when TODOs are completed
+
